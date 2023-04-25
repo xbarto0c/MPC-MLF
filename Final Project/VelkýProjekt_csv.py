@@ -30,6 +30,8 @@ for i in range(1, 4000):
     print(i);
 
 x_train_help = pd.read_csv(r'Dataset\Train\CSV\img_4000.csv'); # read the first csv file
+x_train_help = x_train_help.to_numpy(); # convert to numpy array
+del x_train_help[x_train_help.columns[0]]; # delete the first ID column
 for i in range(4001, 8279):
     x_train_temp = pd.read_csv(r'Dataset\Train\CSV\img_'+str(i)+'.csv'); # read the remaining files and join them together
     del x_train_temp[x_train_temp.columns[0]];
