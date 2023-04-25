@@ -23,11 +23,18 @@ x_train = x_train.to_numpy(); # convert to numpy array
 x_test = x_test.to_numpy();
 
 
-for i in range(1, 8279):
+for i in range(1, 4000):
     x_train_temp = pd.read_csv(r'Dataset\Train\CSV\img_'+str(i)+'.csv'); # read the remaining files and join them together
     del x_train_temp[x_train_temp.columns[0]];
     x_train = np.append(x_train, x_train_temp.to_numpy());
     print(i);
+
+for i in range(4000, 8279):
+    x_train_temp = pd.read_csv(r'Dataset\Train\CSV\img_'+str(i)+'.csv'); # read the remaining files and join them together
+    del x_train_temp[x_train_temp.columns[0]];
+    x_train_help = np.append(x_train_help, x_train_temp.to_numpy());
+    print(i);
+x_train = np.append(x_train, x_train_help);
 
 for i in range(1, 3549):
     x_test_temp = pd.read_csv(r'Dataset\Test\CSV\img_'+str(i)+'.csv');
@@ -42,8 +49,8 @@ for i in range(1, 3549):
 
 # np.savetxt("x_train.csv", x_train, delimiter=",");
 # np.savetxt("x_test.csv", x_test, delimiter=",");
-x_train = x_train.reshape(8279, 682, 539, 1); # reshape the train and test data
-x_test = x_test.reshape(3549, 682, 539, 1);
+x_train = x_train.reshape(8279, 44, 51, 1); # reshape the train and test data
+x_test = x_test.reshape(3549, 44, 51, 1);
 
 y_train = y_train.drop(columns="id"); # preprocess the ground truth data
 y_train = y_train.to_numpy();
