@@ -29,7 +29,8 @@ for i in range(1, 4000):
     x_train = np.append(x_train, x_train_temp.to_numpy());
     print(i);
 
-for i in range(4000, 8279):
+x_train_help = pd.read_csv(r'Dataset\Train\CSV\img_4000.csv'); # read the first csv file
+for i in range(4001, 8279):
     x_train_temp = pd.read_csv(r'Dataset\Train\CSV\img_'+str(i)+'.csv'); # read the remaining files and join them together
     del x_train_temp[x_train_temp.columns[0]];
     x_train_help = np.append(x_train_help, x_train_temp.to_numpy());
